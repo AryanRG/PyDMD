@@ -342,7 +342,9 @@ def test_reconstruction_time_origin(model_class, origin, window, method):
 
     expected = eigenvalues ** np.arange(start, end + 1)
     np.testing.assert_allclose(dmd.reconstructed_data, expected, atol=1e-12)
-    assert dmd.reconstructed_data.shape[1] == len(dmd.dmd_timesteps)
+    np.testing.assert_equal(
+        dmd.reconstructed_data.shape[1], len(dmd.dmd_timesteps)
+    )
 
 
 def test_update_sub_dmd_time():
